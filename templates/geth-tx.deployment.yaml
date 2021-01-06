@@ -30,7 +30,7 @@ spec:
         args: 
         - "-c"
         - "geth --bootnodes=`cat /root/.ethereum/bootnodes` --rpc --rpcaddr 0.0.0.0 --rpcapi={{ .Values.geth.tx.args.rpcapi }} --rpccorsdomain='http://rpc.paas.khallagh.cloud' --ws --networkid=${NETWORK_ID} --ethstats=${HOSTNAME}:${ETHSTATS_SECRET}@${ETHSTATS_SVC} --verbosity=5 "
-        - "admin.addPeer("enode://0576ab41cebbdede7ba29df4cd60db8159efb5a144a3736bdc66bb4d4ab2501c277959d53f48a18c924256bc9fc1dbe5fdaa455f264c3afa687c92a1d3c1e0ec@10.42.2.19:30301")"
+       
         env:
         - name: ETHSTATS_SVC
           value: {{ template "ethereum.fullname" . }}-ethstats.{{ .Release.Namespace }}
