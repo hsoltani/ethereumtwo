@@ -1,0 +1,135 @@
+labels:
+  io.cattle.role: cluster # options are cluster/project
+  io.rancher.app_min_version: 7.3.8
+categories:
+- Blog
+- CMS
+questions:
+- variable: defaultImage
+  default: true
+  description: "Use default Docker image"
+  label: Use Default Image
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: bootnode.image.repository
+    default: "ethereum/client-go"
+    description: "bootnode image name"
+    type: string
+    label: bootnode Image Name
+  - variable: bootnode.image.tag
+    default: "alltools-v1.7.3"
+    description: "bootnode image tag"
+    type: string
+    label: Image Tag
+  - variable: ethstats.image.repository
+    default: "eethereumex/eth-stats-dashboard"
+    description: "ethstats image name"
+    type: string
+    label: ethstats Image Name
+  - variable: ethstats.image.tag
+    default: "v0.0.1"
+    description: "ethstats image tag"
+    type: string
+    label: Image Tag
+  - variable: geth.image.repository
+    default: "ethereum/client-go"
+    description: "geth image name"
+    type: string
+    label: geth Image Name
+  - variable: geth.image.tag
+    default: "v1.7.3"
+    description: "geth image tag"
+    type: string
+    label: Image Tag
+- variable: ethstats.webSocketSecret
+  default: "my-secret-for-connecting-to-ethstats"
+  description: "ethstats secret for posting data"
+  type: string
+  required: false
+  label: ethstats webSocketSecret
+  group: "Ethstats Settings"
+- variable: ethstats.service.type
+  default: "LoadBalancer"
+  description: "k8s service type for ethstats"
+  type: string
+  label: ethstats service type
+  group: "Ethstats Settings"  
+- variable: geth.tx.replicaCount
+  default: "2"
+  description: "geth transaction nodes replica count"
+  type: int
+  required: true
+  label: geth tx replicaCount
+  group: "Geth Settings"
+- variable: geth.tx.service.type
+  default: "ClusterIP"
+  description: "k8s service type for geth transaction nodes"
+  type: string
+  required: true
+  label: geth tx service type
+  group: "Geth Settings"
+- variable: geth.tx.args.rpcapi
+  default: "eth,net,web3"
+  description: "APIs offered over the HTTP-RPC interface"
+  type: string
+  required: true
+  label: geth tx args rpcapi
+  group: "Geth Settings"
+- variable: geth.miner.replicaCount
+  default: "3"
+  description: "geth miner nodes replica count"
+  type: int
+  required: true
+  label: geth miner replicaCount
+  group: "Geth Settings"
+- variable: geth.miner.account.secret
+  default: "my-secret-account-password"
+  description: "geth account secret"
+  type: string
+  required: false
+  label: geth miner account secret
+  group: "Geth Settings"
+- variable: geth.genesis.networkId
+  default: "98052"
+  description: "Ethereum network id"
+  type: int
+  required: true
+  label: geth genesis networkId
+  group: "Geth Settings"
+- variable: geth.genesis.difficulty
+  default: "0x0400"
+  description: "Ethereum network difficulty"
+  type: string
+  required: true
+  label: geth genesis difficulty
+  group: "Geth Settings"
+- variable: geth.genesis.gasLimit
+  default: "0x8000000"
+  description: "Ethereum network gas limit"
+  type: string
+  required: false
+  label: geth genesis gasLimit
+  group: "Geth Settings"
+- variable: geth.account.address
+  default: "0xab70383d9207c6cc43ab85eeef9db4d33a8ad4e8"
+  description: "Geth Account to be initially funded and deposited with mined Ether"
+  type: string
+  required: true
+  label: geth account address
+  group: "Geth Settings"
+- variable: geth.account.privateKey
+  default: "38000e15ca07309cc2d0b30faaaadb293c45ea222a117e9e9c6a2a9872bb3bcf"
+  description: "Geth Private Key"
+  type: string
+  required: true
+  label: geth account privateKey
+  group: "Geth Settings"
+- variable: geth.account.secret
+  default: "SECRET"
+  description: "Geth Account Secret"
+  type: string
+  required: false
+  label: Geth Account Secret
+  group: "Geth Settings"
