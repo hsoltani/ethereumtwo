@@ -45,10 +45,10 @@ spec:
               key: networkid
         ports:
         - name: discovery-udp
-          containerPort: 30303
+          containerPort: 30304
           protocol: UDP
         - name: discovery-tcp
-          containerPort: 30303
+          containerPort: 30304
         volumeMounts:
         - name: data
           mountPath: /root/.ethereum
