@@ -35,7 +35,7 @@ spec:
           mountPath: /etc/bootnode
         ports:
         - name: discovery
-          containerPort: 30301
+          containerPort: 30302
           protocol: UDP
       - name: bootnode-server
         image: {{ .Values.bootnode.image.repository }}:{{ .Values.bootnode.image.tag }}
